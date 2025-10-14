@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1ce31f8fcf23da34db1dc5d4ee1ecadf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - boltPrefab: {fileID: 1287502262990996, guid: 4dd15c7fe51711c48ba135fef149bbf8,
+      type: 3}
+  - Explosion: {fileID: 1052859802758272, guid: 7e5c5b1c1b18764459c69710c7dc4adc,
+      type: 3}
+  - hpSlider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
