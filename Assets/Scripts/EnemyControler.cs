@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyControler : MonoBehaviour
 {
-    int kills = 0;
+    private EnemySpawner spawner;
 
     float leftSpawn = -8f;
     float rightSpawn = 8f;
@@ -13,11 +13,10 @@ public class EnemyControler : MonoBehaviour
 
     [SerializeField]
     GameObject Explosion;
-    [SerializeField]
-    GameObject earth;
 
     void Start()
     {
+        spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
 
         Vector2 position = new();
         position.x = Random.Range(leftSpawn, rightSpawn);
@@ -36,15 +35,9 @@ public class EnemyControler : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (kills >= 1)
+        if (spawner.kills == 15)
         {
-            Vector2 position = new();
-            position.x = 0;
-            position.y = 5;
-
-            transform.position = position;
-            Instantiate(earth, transform.position, Quaternion.identity);
-            earth.transform.Translate(movement * speed * Time.deltaTime);
+            spawner.timeBetweenSpawns = 99999;
         }
     }
 
@@ -52,6 +45,6 @@ public class EnemyControler : MonoBehaviour
     {
         Destroy(this.gameObject);
         Instantiate(Explosion, transform.position, Quaternion.identity);
-        kills++;
+        spawner.kills += 1;
     }
 }
