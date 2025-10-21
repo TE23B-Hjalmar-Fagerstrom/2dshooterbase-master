@@ -15,7 +15,7 @@ public class EarthControler : MonoBehaviour
 
     void Update()
     {
-        if (spawner.kills >= 1)
+        if (spawner.kills >= 15)
         {
             Vector2 movement = Vector2.down;
 
@@ -30,6 +30,9 @@ public class EarthControler : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("Platforms");
+        if (collision.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("Platforms");
+        }
     }
 }

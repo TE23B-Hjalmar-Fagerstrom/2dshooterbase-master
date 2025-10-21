@@ -40,8 +40,8 @@ public class jumperControler : MonoBehaviour
         transform.Translate(movement * speed * Time.deltaTime);
 
         Vector2 spawn = transform.position;
-        spawn.y = -2f;
-        spawn.x = -9f;
+        spawn.y = -2;
+        spawn.x = -8.5f;
 
         if (transform.position.y <= -10)
         {

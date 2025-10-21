@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class EnterScen : MonoBehaviour
-{
+{   
+    [SerializeField]
     public jumperControler player;
 
     [SerializeField]
@@ -14,9 +15,9 @@ public class EnterScen : MonoBehaviour
 
     void Update()
     {
-        player = GameObject.Find("jumperControler").GetComponent<jumperControler>();
-
         Vector2 movement = Vector2.down;
+        spawn.y = -3;
+        spawn.x = -8.5f;
 
         transform.Translate(movement * speed * Time.deltaTime);
 
@@ -28,8 +29,11 @@ public class EnterScen : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        speed = 0;
-        landed = true;
-        player.transform.Translate(spawn);
+        if (collision.gameObject.tag == "ground")
+        {
+            speed = 0;
+            landed = true;
+            player.transform.position = spawn;
+        }
     }
 }
