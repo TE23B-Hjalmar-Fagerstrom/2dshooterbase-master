@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class jumperControler : MonoBehaviour
 {
@@ -46,6 +47,14 @@ public class jumperControler : MonoBehaviour
         if (transform.position.y <= -10)
         {
             transform.position = spawn;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
