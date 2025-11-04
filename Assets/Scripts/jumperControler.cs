@@ -56,5 +56,11 @@ public class jumperControler : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+        
+        if (collision.gameObject.tag == "flag")
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
+        
     }
 }
