@@ -1,13 +1,10 @@
+using System;
 using UnityEngine;
 
 public class AlienControler : MonoBehaviour
 {
     [SerializeField]
     float speed = 3;
-
-    float timeSincelastTurn = 0;
-    [SerializeField]
-    float timeBetweenTurn = 1.5f;
 
     public Animator animator;
 
@@ -21,24 +18,30 @@ public class AlienControler : MonoBehaviour
 
     Vector2 movement = Vector2.left;
 
-    void Update()
+    void FixedUpdate()
     {
         bool isGroundedleft = Physics2D.OverlapCircle(
         groundCheckerLeft.transform.position,
+        -.1f,
+        groundLayer
+        );
+
+        bool isGroundedRight = Physics2D.OverlapCircle(
+        groundCheckerRight.transform.position,
         .1f,
         groundLayer
         );
 
-        timeSincelastTurn += Time.deltaTime;
-
-        if (timeSincelastTurn >= timeBetweenTurn)
+        if (isGroundedleft == false || isGroundedRight == false)
         {
             movement *= -1;
-            timeSincelastTurn = 0;
         }
 
         transform.Translate(movement * speed * Time.deltaTime);
+    }
 
+    void Update()
+    {
         if (movement.x > 0)
         {
             animator.SetBool("walking left", false);
@@ -47,6 +50,14 @@ public class AlienControler : MonoBehaviour
         {
             animator.SetBool("walking left", true);
         }
+    }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            movement *= -1;
+            Console.WriteLine("move bitch");
+        }
     }
 }
