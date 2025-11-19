@@ -8,6 +8,8 @@ public class NewEnemyControler : MonoBehaviour
     float leftSpawn = -8f;
     float rightSpawn = 8f;
 
+    Vector2 sideMovement = Vector2.left;
+
     [SerializeField]
     float speed = 2;
 
@@ -16,13 +18,13 @@ public class NewEnemyControler : MonoBehaviour
 
     float timeSincelastTurn = 0;
     [SerializeField]
-    float timeBetweenTurns = 2f;
+    float timeBetweenTurns = 5f;
 
     void Start()
     {
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
 
-        Vector2 position = new();
+        Vector2 position;
         position.x = Random.Range(leftSpawn, rightSpawn);
         position.y = Random.Range(Camera.main.orthographicSize + 1f, Camera.main.orthographicSize + 2f);
 
@@ -34,18 +36,15 @@ public class NewEnemyControler : MonoBehaviour
         timeSincelastTurn += Time.deltaTime;
 
         Vector2 movement = Vector2.down;
-        transform.Translate(movement * speed * Time.deltaTime);
-
-        Vector2 sideMovement = Vector2.right;
 
         if (timeSincelastTurn >= timeBetweenTurns)
         {
             sideMovement *= -1;
-            print($"{sideMovement} 1");
             timeSincelastTurn = 0;
         }
 
         transform.Translate(sideMovement * speed * Time.deltaTime);
+        transform.Translate(movement * speed * Time.deltaTime);
 
         if (transform.position.y < -Camera.main.orthographicSize - 1)
         {

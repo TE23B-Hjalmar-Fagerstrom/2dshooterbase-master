@@ -129,6 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 3
   Explosion: {fileID: 1052859802758272, guid: 7e5c5b1c1b18764459c69710c7dc4adc, type: 3}
+  newEnemyPrefab: {fileID: 3565752378023496125, guid: ba74ded71a8b7de449bf8e7b0b9da86e,
+    type: 3}
 --- !u!58 &6262058629784521665
 CircleCollider2D:
   m_ObjectHideFlags: 0

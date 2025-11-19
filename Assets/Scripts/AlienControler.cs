@@ -57,7 +57,6 @@ public class AlienControler : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             movement *= -1;
-            Console.WriteLine("move bitch");
         }
     }
 }

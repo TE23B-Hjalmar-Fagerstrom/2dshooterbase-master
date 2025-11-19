@@ -5,8 +5,8 @@ public class ConfettiControler : MonoBehaviour
 {
     private ConfettiSpawner spawner;
 
-    float leftSpawn = -9f;
-    float rightSpawn = 9f;
+    float leftSpawn = -9.5f;
+    float rightSpawn = 9.5f;
     Color color;
 
     [SerializeField]

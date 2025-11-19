@@ -13,6 +13,8 @@ public class EnemyControler : MonoBehaviour
 
     [SerializeField]
     GameObject Explosion;
+    [SerializeField]
+    GameObject newEnemyPrefab;
 
     void Start()
     {
@@ -45,6 +47,12 @@ public class EnemyControler : MonoBehaviour
     {
         Destroy(this.gameObject);
         Instantiate(Explosion, transform.position, Quaternion.identity);
+
+        for (int i = 0; i < 5; i++)
+        {
+            Instantiate(newEnemyPrefab, transform.position, Quaternion.identity);  
+        }
+
         spawner.kills += 1;
     }
 }
