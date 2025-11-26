@@ -48,6 +48,15 @@ public class jumperControler : MonoBehaviour
         {
             transform.position = spawn;
         }
+
+        if (x < 0)
+        {
+            this.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (x > 0)
+        {
+            this.GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
